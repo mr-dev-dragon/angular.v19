@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,  Signal, WritableSignal, signal, computed} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,5 +8,19 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'NgEvolve';
+
+
+
+
+
+  count: WritableSignal<number> = signal(0); // Remove 'const'
+  doubleCount: Signal<number> = computed(() => this.count() * 2); // Use 'this.count'
+  increment() {
+    this.count.set(this.count() + 1);
+  }
+
+
+
+
 }
+
